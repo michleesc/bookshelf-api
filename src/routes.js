@@ -25,7 +25,7 @@ const routes = [
         method: 'DELETE',
         path: '/books/{bookId}',
         handler: deleteIdBooks,
-    }
-]
+    },
+],
 
 module.exports = routes;

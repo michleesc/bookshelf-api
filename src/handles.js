@@ -33,7 +33,7 @@ const addBooks = (request, h) => {
         updatedAt,
     }
 
-    if (name === undefined){
+    if (name === undefined) {
         const response = h.response({
             status: 'fail',
             message: 'Gagal menambahkan buku. Mohon isi nama buku',
@@ -71,7 +71,6 @@ const addBooks = (request, h) => {
     });
     response.code(500);
     return response;
-
 };
 
 const getAllBooks = (request, h) => {
