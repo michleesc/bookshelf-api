@@ -1,7 +1,7 @@
 const { nanoid } = require('nanoid');
 const books = require('./books');
 
-const addBooks = (request,h) => {
+const addBooks = (request, h) => {
     const { 
         name, 
         year, 
@@ -10,7 +10,7 @@ const addBooks = (request,h) => {
         publisher, 
         pageCount, 
         readPage, 
-        reading 
+        reading,
     } = request.payload;
 
     const id = nanoid(16);
