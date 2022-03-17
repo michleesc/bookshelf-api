@@ -77,11 +77,11 @@ const addBooks = (request,h) => {
 const getAllBooks = (request, h) => {
     const { name, reading, finished } = request.query;
     if (name !== undefined) {
-        const book = books.filter((book) => book.name.toLowerCase().search(name.toLowerCase()) >= 0);
+        const bookName = books.filter((book) => book.name.toLowerCase().search(name.toLowerCase()) >= 0);
         return {
             status: 'success',
             data: {
-                books: book.map((book) => ({
+                books: bookName.map((book) => ({
                     id: book.id,
                     name: book.name,
                     publisher: book.publisher,
@@ -91,11 +91,11 @@ const getAllBooks = (request, h) => {
     }
     if(reading !== undefined) {
         if (reading == 0) {
-            const book = books.filter((book) => book.reading === false);
+            const bookReading = books.filter((book) => book.reading === false);
             return {
                 status: 'success',
                 data: {
-                    books: book.map((book) => ({
+                    books: bookReading.map((book) => ({
                         id: book.id,
                         name: book.name,
                         publisher: book.publisher,
@@ -103,11 +103,11 @@ const getAllBooks = (request, h) => {
                 },
             };
     } else if (reading == 1) {
-        const book = books.filter((book) => book.reading === true);
+        const bookReading = books.filter((book) => book.reading === true);
         return {
             status: 'success',
             data: {
-                books: book.map((book) => ({
+                books: bookReading.map((book) => ({
                     id: book.id,
                     name: book.name,
                     publisher: book.publisher,
@@ -117,7 +117,7 @@ const getAllBooks = (request, h) => {
     } else {
         const response = h.response({
             status: 'fail',
-            message: 'Nilai reading harus 0 atau 1',
+            message: 'Nilai reading harus mempunyai nilai 0 atau 1',
         });
         response.code(400);
         return response;
@@ -125,11 +125,11 @@ const getAllBooks = (request, h) => {
 }
     if (finished !== undefined){
         if (finished == 0) {
-            const book = books.filter((book) => book.finished === false);
+            const bookfinished = books.filter((book) => book.finished === false);
             return {
                 status: 'success',
                 data: {
-                    books: book.map((book) => ({
+                    books: bookfinished.map((book) => ({
                         id: book.id,
                         name: book.name,
                         publisher: book.publisher,
@@ -137,11 +137,11 @@ const getAllBooks = (request, h) => {
                 },
             };
         } else if (finished == 1){
-            const book = books.filter((book) => book.finished === true);
+            const bookfinished = books.filter((book) => book.finished === true);
             return {
                 status: 'success',
                 data: {
-                    books: book.map((book) => ({
+                    books: bookfinished.map((book) => ({
                         id: book.id,
                         name: book.name,
                         publisher: book.publisher,
@@ -151,7 +151,7 @@ const getAllBooks = (request, h) => {
         } else {
             const response = h.response({
                 status: 'fail',
-                message: 'Nilai finished harus 0 atau 1',
+                message: 'Nilai finished harus mempunyai nilai 0 atau 1',
             });
             response.code(400);
             return response;
